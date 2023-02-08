@@ -1,7 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import {useNavigate} from 'react-router-dom'
+import AuthContext from '../../store/AuthContextProvider';
 import classes from './AuthForm.module.css'
 const AuthForm=()=>{
+    const authCtx=useContext(AuthContext);
     const initial=localStorage.getItem('token')
     const navigate=useNavigate();
     const [token,setToken]=useState(initial)
@@ -47,7 +49,7 @@ const AuthForm=()=>{
                 setIsLogin(true);
                 setToken(data.idToken);
                 localStorage.setItem('token',data.idToken);
-                
+                authCtx.login(data.idToken);
             })
         }else{
             return res.json().then((data)=>{
