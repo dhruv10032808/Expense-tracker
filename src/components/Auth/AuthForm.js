@@ -7,7 +7,7 @@ const AuthForm=()=>{
     const initial=localStorage.getItem('token')
     const navigate=useNavigate();
     const [token,setToken]=useState(initial)
-    const[isLogin,setIsLogin]=useState(false);
+    const[isLogin,setIsLogin]=useState(true);
    const emailInputRef=useRef('');
    const passwordInputRef=useRef('');
    const confirmPasswordInputRef=useRef('');
